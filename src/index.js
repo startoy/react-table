@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import UserTableApp from './components/UserTableApp.react';
 import './index.css';
 
+var userList = [
+  {Name:'Mr. A',Age:32,Nickname:'A'},
+  {Name:'Mr. B',Age:22,Nickname:'B'},
+  ];
+
 ReactDOM.render(
-  <App />,
+  <UserTableApp userlists={userList} />,
   document.getElementById('root')
 );
