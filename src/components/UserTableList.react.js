@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import UserTableListItem from './UserTableListItem.react';
+import UserTableListItem from './UserTableListItem.react'
+import  '../css/UserTableList.react.css'
 
 class UserTableList extends Component{
 
 render(){
-    
-
-var thBody = this.props.userlists.map((user,index) => {
+var thBodyContent = this.props.userlists.map((user,index) => {
     return (
          <UserTableListItem 
                 key={index} 
@@ -18,21 +17,31 @@ var thBody = this.props.userlists.map((user,index) => {
 });
 
     return (
-        <table style={{backgroundColor: 'red'}}>
-            <thead style={{backgroundColor: 'pink'}}>
+        <table className="table shadow">
+            <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Nickname</th>
-                    <th>Action</th>
+                    <th style={{width:'35%'}}>Name</th>
+                    <th style={{width:'9%'}}>Age</th>
+                    <th style={{width:'35%'}}>Nickname</th>
+                    <th style={{width:'21%'}}>Action</th>
                 </tr>
             </thead>
             <tbody>
-                    {thBody}
+                    {thBodyContent}
             </tbody>
         </table>
         );
     }
+}
+
+UserTableList.propTypes = {
+  userlists : React.PropTypes.array.isRequired,
+  onUserDelete : React.PropTypes.func,
+  onUserEdit : React.PropTypes.func,
+}
+
+UserTableList.defaultProps = {
+   
 }
 
 export default UserTableList

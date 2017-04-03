@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddUser from './AddUser.react'
 import UserTableList from './UserTableList.react'
+import  '../css/UserTableApp.react.css'
 
 
 class UserTableApp extends Component{
@@ -78,13 +79,13 @@ saveToStorage(data,isentire){
     localStorage.setItem('user',JSON.stringify(dataArray)) //insert array to localStorage JSON
 }
 
-//  insert/manage data once before render
+
 componentWillMount(){
     // check if browser support Storage or not
     if (typeof(Storage) !== "undefined") {
         this.saveToStorage(this.props.userlists,true)
     } else {
-        alert('Browser not support');
+        alert('Browser not support Storage');
         // return;
     }
     this.setState({
@@ -96,24 +97,42 @@ componentWillMount(){
 render(){
     let display = this.state.displayForm ? "inline-block" : "none";
     return (
-        <div>
-            <UserTableList 
-                userlists={this.state.userlists} 
-                onUserDelete={this.handleDeleteUser}
-                onUserEdit={this.handleEditUser} 
-            />
-            <div style={{ display : display }} >
-                <AddUser 
-                    onUserAdd={this.handleAddUser} 
-                    onCancelAdd={this.toggleAdd} 
+        <div className="container defaultfontstyle">
+            <div className="pull-center">
+                <UserTableList 
+                    userlists={this.state.userlists} 
+                    onUserDelete={this.handleDeleteUser}
+                    onUserEdit={this.handleEditUser} 
                 />
-            </div>
-            <div>               
-                <button onClick={()=>this.toggleAdd()}>Add</button>
+                <div className="space-each-sec"> 
+                    <div style={{ display : display }} >
+                        <AddUser 
+                            onUserAdd={this.handleAddUser} 
+                            onCancelAdd={this.toggleAdd} 
+                        />
+                    </div>
+                    <div className="space-each-sec">               
+                        <input type="button" onClick={()=>this.toggleAdd()} value="Add"  />
+                    </div>
+                </div>
             </div>
       </div>  
         );
     }
+}
+
+//if no props -> use default
+let TuserList = [
+                {Name:'Mr. A',Age:32,Nickname:'A'},
+                {Name:'Mr. B',Age:22,Nickname:'B'},
+                ]
+
+UserTableApp.propTypes = {
+  userlists : React.PropTypes.array.isRequired,
+}
+
+UserTableApp.defaultProps = {
+    userlists: TuserList,
 }
 
 export default UserTableApp

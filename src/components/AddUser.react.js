@@ -27,23 +27,31 @@ class AddUser extends Component{
 
 
 render(){
-    const styles = {width:"10%",padding:2}
     const options = []
     for (var i = 1; i <= 100; i++) {
          options.push( <option value={i} key={i}>{i}</option>);
     }
     return (
         <div>
-           <input type="text" style={styles} ref="uname" />
-           <select style={styles} ref="age">
+           <input type="text" ref="uname" maxLength="16" />
+           <select ref="age">
                {options}
            </select>
-           <input type="text" style={styles} ref="nickname" />
+           <input type="text"ref="nickname" maxLength="16"  />
            <input type="button" className="#" value="Save" onClick={()=>this.handleClickSave()} />
            <input type="button" className="#" value="Cancel" onClick={()=>this.handleClickCancel()} />
         </div>
         );
     }
+}
+
+AddUser.propTypes = {
+  onUserAdd : React.PropTypes.func,
+  onCancelAdd : React.PropTypes.func,
+}
+
+AddUser.defaultProps = {
+   
 }
 
 

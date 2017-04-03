@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserInlineEdit from './UserInlineEdit.react'
+
 class UserTableListItem extends Component{
     constructor(props){
         super(props)
@@ -31,7 +32,7 @@ class UserTableListItem extends Component{
                  inputtype = 'text-input'
             }
             return(
-                <td key={index} style={{backgroundColor: 'blue'}}>
+                <td key={index}>
                     <UserInlineEdit
                         keyitem={key}
                         text={this.props.user[key]} 
@@ -70,11 +71,25 @@ class UserTableListItem extends Component{
         return (
             <tr>
                 {view}
-                <td><input type="button" className="#" value={btnEditTxt} onClick={this.handleClickBtnEdit} />
-                <input type="button" className="#" value="Delete" onClick={()=>this.handleClickDelete()} /></td>
+                <td>
+                    <input  type="button" className="#" 
+                            value={btnEditTxt} onClick={this.handleClickBtnEdit} />
+                    <input  type="button" className="#" 
+                            value="Delete" onClick={()=>this.handleClickDelete()} />
+                </td>
             </tr>
             );
         }
+}
+
+UserTableListItem.propTypes = {
+  user : React.PropTypes.object,
+  onUserDelete : React.PropTypes.func,
+  onUserEdit : React.PropTypes.func,
+}
+
+UserTableListItem.defaultProps = {
+   user : {}
 }
 
 export default UserTableListItem

@@ -1,0 +1,39 @@
+.table{
+    table-layout: fixed;
+    text-align: left;
+    width:100%;
+    margin:auto;
+    background-color:#f4f4f4;
+ }
+
+.table td{
+    font-size:16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+.table th,td{
+     padding: 12.5px;
+     border-bottom: 1px solid #ddd;
+ }
+
+.table thead{
+     background-color: lightgrey;
+ }
+
+.table tbody tr{
+      background-color: white;
+ }
+
+.table tbody tr:hover {
+      background-color: #f9f9f9;
+ }
+
+.table input[type=text] {
+
+    width: 100%;
+}
+
+ .shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }

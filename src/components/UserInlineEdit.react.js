@@ -20,6 +20,7 @@ class UserInlineEdit extends React.Component{
                             type='text' 
                             onChange={this.handleChange} 
                             value={this.props.text}
+                            maxLength="16"
                             autoFocus
                             />
                         )
@@ -52,6 +53,19 @@ class UserInlineEdit extends React.Component{
         return(<div>{this.renderInput()}</div>)
     }
 
+}
+
+UserInlineEdit.propTypes = {
+    text :  React.PropTypes.oneOfType([
+            React.PropTypes.string,
+            React.PropTypes.number
+        ]),
+    inputType : React.PropTypes.string,
+    handleChange : React.PropTypes.func,
+}
+
+UserInlineEdit.defaultProps = {
+   user : {}
 }
 
 export default UserInlineEdit
