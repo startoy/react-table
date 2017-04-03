@@ -5,18 +5,14 @@ class UserTableList extends Component{
 
 render(){
     
-// const thName = Object.getOwnPropertyNames(this.props.userlists[0]).map((name,index) => {
-//     return (
-//         <th key={index}>{name}</th>
-//     );
-// });
 
 var thBody = this.props.userlists.map((user,index) => {
     return (
-         <UserTableListItem key={index} 
-                 onUserDelete={this.props.onUserDelete}
-                 onUserEdit={this.props.onUserEdit} 
-                 user={user}
+         <UserTableListItem 
+                key={index} 
+                onUserDelete={this.props.onUserDelete}
+                onUserEdit={this.props.onUserEdit} 
+                user={user}
          />
     );
 });
